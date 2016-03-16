@@ -1,0 +1,25 @@
+<h1> Meetup </h1>
+<div>
+
+<h2><%= @error %></h2>
+
+<%= @meetup.name %>
+<%= @meetup.description %>
+<%= @meetup.location %> created by
+<%= @meetup.users.first.username%>
+</div>
+  <h2> Attendants </h2>
+  <ul>
+    <% @meetup.users.each do |attendant| %>
+  <li><%= attendant.username %>.....<img src="<%= attendant.avatar_url%>" height="42" width="42"/></li>
+  <% end  %>
+</ul>
+<div>
+<% if @show_button %>
+<form class="" action="/meetups/<%= @meetup.id %>/join" method="post">
+<input type="submit" name="join" value="Join" />
+</form>
+<% end %>
+
+<a href="/">Click here to go back to the main list </a>
+</div>
